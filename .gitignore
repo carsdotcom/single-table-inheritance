@@ -5,3 +5,4 @@ composer.lock
 .idea
 *.properties
 nbproject/project.xml
+.phpunit*

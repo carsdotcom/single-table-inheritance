@@ -59,6 +59,19 @@ class Vehicle extends Eloquent {
     $this->dates = $dates;
   }
 
+    /**
+     * This is a shim, the unit tests modify what fields are dates on the fly, but
+     * Laravel 10+ doesn't support $this->dates property natively
+     */
+  public function getDates()
+  {
+      $dates = parent::getDates();
+      if (is_array($this->dates ?? null) && array_diff($this->dates, $dates)) {
+          $dates = array_unique(array_merge($dates, $this->dates));
+      }
+      return $dates;
+  }
+
   public function setPrimaryKey($primaryKey) {
     $this->primaryKey = $primaryKey;
   }

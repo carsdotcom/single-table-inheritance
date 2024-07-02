@@ -49,6 +49,7 @@ class SingleTableInheritanceTraitModelMethodsTest extends TestCase {
     $attributes = $vehicle->getPersistedAttributes();
     sort($attributes);
     $this->assertEquals(['color', 'created_at', 'id', 'owner_id', 'purchase_date', 'type', 'updated_at'], $attributes);
+    $this->assertEmpty(array_diff($vehicle->getDates(), $vehicle->getPersistedAttributes()));
   }
 
   public function testGetPersistedIncludesPrimaryKey() {
