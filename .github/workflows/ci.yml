@@ -15,6 +15,14 @@ jobs:
             laravel: 8.*
           - php: 8.0
             laravel: 5.8.*
+        include:
+          - php: 8.2
+            laravel: 11.*
+          - php: 8.2
+            laravel: 10.*
+          - php: 8.1
+            laravel: 9.*
+
     name: Unit Tests - PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
     steps:
       - uses: actions/checkout@v1
